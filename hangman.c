@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
+void opening() {
+    printf("X             X\n");
+    printf("X             X\n");
+    printf("X             X\n");
+    printf("o=============o\n");
+    printf("||  HANGMAN  ||\n");
+    printf("o=============o\n");
+}
+
+void guess(char guesses[26], int tries) {
+    char guess;
+    scanf(" %c", &guess);
+
+    guesses[tries] = guess;
+}
+
 int main() {
     char secretword[20];
 
@@ -11,6 +27,8 @@ int main() {
 
     char guesses[26];
     int tries = 0;
+
+    opening();
 
     do {
 
@@ -34,10 +52,7 @@ int main() {
         }
         printf("\n");
 
-        char guess;
-        scanf(" %c", &guess);
-
-        guesses[tries] = guess;
+        guess(guesses, tries);
         tries++;
 
     } while(!correct && !hung);
